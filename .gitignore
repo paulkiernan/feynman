@@ -99,3 +99,12 @@ sympy-plots-for-*.tex/
 
 # xindy
 *.xdy
+
+
+## Diagramming ignores
+*.mp
+*.t1
+
+
+## System ignores
+.DS_Store
