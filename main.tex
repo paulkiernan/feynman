@@ -1,0 +1,143 @@
+\documentclass[10pt,a4paper]{article}
+
+%% Preamble
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}           % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper}              % ... or a4paper or a5paper or ... 
+\usepackage[parfill]{parskip}   % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{feynmp-auto}
+
+\title{Particle Physics and its Feynman Representations}
+\author{
+    Paul Anthony Kiernan \\
+    \texttt{pak79@cornell.edu}
+}
+\date{\today}
+
+
+%% Begin document
+\begin{document}
+    \unitlength=1mm
+
+\maketitle
+
+\begin{abstract}
+    This project represents the notes of a two-part project: an exploration of
+    particle physics and its tools, and \LaTeX. I first explore the scattering
+    processes of particles with well-defined momenta using the graphical
+    technique popularized by Richard Feynman. The examination of these
+    scattering processes are then illustrated using various \LaTeX  packages.
+    \newline
+    \newline
+    Such meow! Yay!
+\end{abstract}
+
+\tableofcontents
+\listoffigures
+
+\newpage
+\section{Feynman Diagrams}
+
+    To calculate the probabilities for relativistic scattering processes we
+    need to find out the Lorenz-invariant scattering amplitude which connects
+    an initial state $|\Psi_{i}\rangle$ containing particles of well defined
+    momenta to a final state $|\Psi_{f}\rangle$ other (often different)
+    particles also with well-defined momenta.
+
+    \subsection{Canonical Quantization Formulation}
+        The probability amplitude for a transition of a quantum system from the
+        initial state $|i\rangle$ to final state $|f\rangle$ is given by the
+        matrix element
+            \begin{equation}
+                S_{fi} = \langle f | S | i \rangle
+            \end{equation}
+        where S is the scattering matrix.
+
+        In the cannonical quantum field theory the scattering matrix, or
+        S-matrix, is represented within the interaction picture by the
+        perturbation series in the powers of the interaction Lagrangian,
+            \begin{equation}
+                S = \sum_{n=0}^{\infty} \frac{i^{n}}{n!} 
+                    \int \prod_{j=1}^{n} d^4 x_j T  \prod_{j=1}^{n} L_v (x_j)
+                    \equiv \sum_{n=0}^{\infty} S^{(n)}
+            \end{equation}
+        where $L_v$ is the interaction Lagrangian and $T$ signifies the time-
+        ordered product of operators.
+
+        A Feynman is a graphical representation of a term in the Wick's
+        expansion of the time-ordered product in the $n$-th order term
+        $S^{(n)}$ of the S-matrix.
+            \begin{equation}
+                T \prod_{j=1}^{n} L_v(j_j) =
+                \sum_{\text{all possible contractions}} (\pm) N \prod_{j=1}^{n} L_v (x_j)
+            \end{equation}
+        where $N$ signifies the normal-product of the operators and $(\pm)$
+        takes care of all the possible sign change when commuting the fermionic
+        operators to bring them together for a contraction (a propogator).
+
+
+\newpage
+\section{Scattering Processes}
+    \subsection{Compton Scattering}
+
+        A photon of wavelength $\lambda$ comes in from the left, collides with
+        a target at rest, and a new photon of wavelength $\lambda$ emerges at
+        an angle $\theta$.
+
+        \begin{figure}[h]
+            \centering
+            \begin{fmffile}{compton}
+                \begin{fmfgraph*}(100,100)
+                    \fmfleft{i1,i2}
+                    \fmfright{o1,o2}
+
+                    \fmflabel{$\gamma$}{i2}
+                    \fmflabel{$e^-$}{i1}
+                    \fmflabel{$\gamma$}{o1}
+                    \fmflabel{$e^-$}{o2}
+
+                    \fmf{photon}{i2,v2}
+                    \fmf{fermion}{i1,v1,v2,o2}
+                    \fmf{photon}{v1,o1}
+                \end{fmfgraph*}
+            \end{fmffile}
+
+            \caption[Compton Scattering]{Feynman diagram for Compton scattering}
+            \label{fig:compton-scattering}
+        \end{figure}
+
+\newpage
+\section{Higgs Decays}
+    \subsection{Gluon Decay}
+        \subsubsection{Dual Gluon Decay}
+
+            So many meows.
+
+            \begin{figure}[h]
+                \centering
+                \begin{fmffile}{h_gg}
+                    \begin{fmfgraph*}(100,100)
+                        \fmfleft{i1}
+                        \fmfright{d1,d2,o1,o2,d3,d4}
+                        \fmflabel{$h$}{i1}
+                        \fmflabel{$g$}{o1}
+                        \fmflabel{$g$}{o2}
+                        \fmf{dashes_arrow,tension=2}{i1,v1}
+                        \fmf{quark,label=$t$,label.side=right}{v1,v2}
+                        \fmf{quark,label=$t$}{v2,v3}
+                        \fmf{quark,label=$t$}{v3,v1}
+                        \fmf{gluon}{v2,o1}
+                        \fmf{gluon}{v3,o2}
+                        \fmfdot{v1,v2,v3}
+                        \fmffreeze
+                        \fmfshift{11down}{v2}
+                        \fmfshift{11up}{v3}
+                    \end{fmfgraph*}
+                \end{fmffile}
+
+                \caption[Gluon-gluon Decay]{Feynman diagram for Higgs Field Gluon-Gluon Decay}
+                \label{fig:compton-scattering}
+            \end{figure}
+\end{document}
