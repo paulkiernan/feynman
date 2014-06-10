@@ -108,3 +108,6 @@ sympy-plots-for-*.tex/
 
 ## System ignores
 .DS_Store
+
+## Compiled output
+*.pdf
